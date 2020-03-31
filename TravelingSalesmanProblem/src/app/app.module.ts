@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GeoPointTableComponent } from './geo-point-table/geo-point-table.component';
 import {GeoSimpleDisplayComponent} from "./geo-simple-display/geo-simple-display.component";
+import { GeoPointRowComponent } from './geo-point-row/geo-point-row.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GeoPointTableComponent,
-    GeoSimpleDisplayComponent
+    GeoSimpleDisplayComponent,
+    GeoPointRowComponent
   ],
   imports: [
     BrowserModule,
