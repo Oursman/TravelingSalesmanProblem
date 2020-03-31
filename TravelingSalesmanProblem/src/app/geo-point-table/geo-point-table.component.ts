@@ -11,7 +11,9 @@ import {GeoPoint} from "../interfaces/geopoint";
 export class GeoPointTableComponent implements OnInit {
 
   @Output() tableChange = new EventEmitter<GeoPoint[]>();
-  private table:GeoPoint[];
+  table:GeoPoint[] = [];
+  point: GeoPoint  = {"latitude":0,"name": "geo-simple-input", "longitude":0};
+
 
   constructor() { }
 
@@ -21,6 +23,10 @@ export class GeoPointTableComponent implements OnInit {
   onTableChange(event){
     let clonedPoint = Object.assign({},event.target.value ); // copie superficielle (suffisante ici pour éviter de modifier accidentellement le point)
     this.tableChange.emit(clonedPoint);
+  }
+
+  onAddPoint(){
+    this.table.push(this.point);
   }
 
 

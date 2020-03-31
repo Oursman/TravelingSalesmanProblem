@@ -13,6 +13,12 @@
     <td><input type="number" name="latitude" [value]="t.latitude" (input)="onTableChange($event)" /></td>
     <td><input type="number" name="longitude" [value]="t.longitude" (input)="onTableChange($event)" /></td>
   </tr>
+  <tr>
+    <td><input type="number" name="name" [value]="point.name"/></td>
+    <td><input type="number" name="latitude" [value]="point.latitude"/></td>
+    <td><input type="number" name="longitude" [value]="point.longitude"/></td>
+    <td><button (click)="onAddPoint()">add</button></td>
+  </tr>
   <tbody>
 </table>
 
