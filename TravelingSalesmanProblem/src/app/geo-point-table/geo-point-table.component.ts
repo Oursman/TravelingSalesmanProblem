@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {GeoPoint} from "../interfaces/geopoint";
 
 @Component({
@@ -12,7 +12,7 @@ export class GeoPointTableComponent implements OnInit {
 
   @Output() tableChange = new EventEmitter<GeoPoint[]>();
   table:GeoPoint[] = [];
-  point: GeoPoint  = {"latitude":0,"name": "geo-simple-input", "longitude":0};
+  @Input() point: GeoPoint  = {"latitude":0,"name": "geo-simple-input", "longitude":0};
 
 
   constructor() { }
@@ -26,7 +26,8 @@ export class GeoPointTableComponent implements OnInit {
   }
 
   onAddPoint(){
-    this.table.push(this.point);
+    let clonedPoint = Object.assign({},this.point);
+    this.table.push(clonedPoint);
   }
 
 

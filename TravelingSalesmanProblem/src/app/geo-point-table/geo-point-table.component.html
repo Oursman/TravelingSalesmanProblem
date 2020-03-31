@@ -14,9 +14,9 @@
     <td><input type="number" name="longitude" [value]="t.longitude" (input)="onTableChange($event)" /></td>
   </tr>
   <tr>
-    <td><input type="number" name="name" [value]="point.name"/></td>
-    <td><input type="number" name="latitude" [value]="point.latitude"/></td>
-    <td><input type="number" name="longitude" [value]="point.longitude"/></td>
+    <td><input type="number" name="name" [value]="point.name" (input)="point.name = $event.target.value"/></td>
+    <td><input type="number" name="latitude" [value]="point.latitude" (input)="point.latitude = $event.target.value"/></td>
+    <td><input type="number" name="longitude" [value]="point.longitude" (input)="point.longitude = $event.target.value"/></td>
     <td><button (click)="onAddPoint()">add</button></td>
   </tr>
   <tbody>
