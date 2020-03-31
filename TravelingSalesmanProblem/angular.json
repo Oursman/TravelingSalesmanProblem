@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "TravelingSalesmanProblem"
+    }
+  },
+  "defaultProject": "TravelingSalesmanProblem",
+  "cli": {
+    "analytics": "86030a47-1980-440c-9017-bf484d713074"
+  }
 }
