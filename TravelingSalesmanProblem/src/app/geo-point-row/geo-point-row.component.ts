@@ -19,9 +19,7 @@ export class GeoPointRowComponent implements OnInit {
   }
 
   onDelete(){
-    console.log("okkk2");
-    let clonedPoint = Object.assign({},null );
-    this.pointMigration.emit(clonedPoint);
+    this.pointMigration.emit(null);
   }
 
   onPointChange(event){

@@ -31,8 +31,10 @@ export class GeoPointTableComponent implements OnInit {
     this.table.push(clonedPoint);
   }
 
-  update(t){
-    this.table = this.table.filter(item => item != t);
+  update(event,t){
+    if(event == null) {
+      this.table = this.table.filter(item => item != t);
+    }
   }
 
 
