@@ -9,7 +9,7 @@ import {GeoPoint} from "../interfaces/geopoint";
 export class GeoPointRowComponent implements OnInit {
   @Input() point: GeoPoint;
   @Output() pointChange = new EventEmitter<GeoPoint>();
-  @Output() pointMigration: EventEmitter<number|null>;
+  @Output() pointMigration = new EventEmitter<number|null>();
   private latitudeValue: number;
   private nameValue: string;
   private longitudeValue: number;
@@ -19,7 +19,9 @@ export class GeoPointRowComponent implements OnInit {
   }
 
   onDelete(){
-    this.pointMigration.emit(null);
+    console.log("okkk2");
+    let clonedPoint = Object.assign({},null );
+    this.pointMigration.emit(clonedPoint);
   }
 
   onPointChange(event){

@@ -14,7 +14,6 @@ export class GeoPointTableComponent implements OnInit {
   table:GeoPoint[] = [];
   @Input() point: GeoPoint  = {"latitude":0,"name": "geo-simple-input", "longitude":0};
 
-
   constructor() { }
 
   ngOnInit(): void {
@@ -30,6 +29,10 @@ export class GeoPointTableComponent implements OnInit {
   onAddPoint(){
     let clonedPoint = Object.assign({},this.point);
     this.table.push(clonedPoint);
+  }
+
+  update(t){
+    this.table = this.table.filter(item => item != t);
   }
 
 
