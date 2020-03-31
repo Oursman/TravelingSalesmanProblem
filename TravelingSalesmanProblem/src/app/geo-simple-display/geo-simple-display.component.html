@@ -1,0 +1,37 @@
+
+<br>
+<br>
+<table border="False">
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Where ?</td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>{{point.name}}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Latitude</td>
+      <td>{{point.latitude| number:'0.4-4'}}</td>
+      <td>
+        <ng-container *ngIf="point.latitude > 0">North</ng-container>
+        <ng-container *ngIf="point.latitude <= 0">South</ng-container>
+        hemisphere
+      </td>
+    </tr>
+    <tr>
+      <td>Longitude</td>
+      <td>{{point.longitude| number:'0.4-4'}}</td>
+      <td>
+        <ng-container *ngIf="point.latitude > 0">East</ng-container>
+        <ng-container *ngIf="point.latitude <= 0">West</ng-container>
+        from Greenwich
+      </td>
+    </tr>
+  <tbody>
+</table>
+
+
