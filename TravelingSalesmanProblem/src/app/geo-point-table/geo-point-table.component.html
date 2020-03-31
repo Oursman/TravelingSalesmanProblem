@@ -1,1 +1,19 @@
-<p>geo-point-table works!</p>
+
+<br>
+<br>
+<table border="False">
+  <tbody>
+  <tr>
+    <td>Name</td>
+    <td>Latitude</td>
+    <td>Longitude</td>
+  </tr>
+  <tr *ngFor="let t of table">
+    <td><input type="number" name="name" [value]="t.name" (input)="onTableChange($event)"  /></td>
+    <td><input type="number" name="latitude" [value]="t.latitude" (input)="onTableChange($event)" /></td>
+    <td><input type="number" name="longitude" [value]="t.longitude" (input)="onTableChange($event)" /></td>
+  </tr>
+  <tbody>
+</table>
+
+

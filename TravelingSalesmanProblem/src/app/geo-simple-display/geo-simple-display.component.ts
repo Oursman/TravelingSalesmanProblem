@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {GeoPoint} from "../interfaces/geopoint";
 
 @Component({
   selector: 'app-geo-simple-display',
@@ -9,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class GeoSimpleDisplayComponent implements OnInit {
 
   @Input() point :GeoPoint;
-  
+
   constructor() { }
 
   ngOnInit() {
@@ -17,7 +18,7 @@ export class GeoSimpleDisplayComponent implements OnInit {
 
     gotoNorth($event){
     if(this.point.latitude+1<90){
-      this.point.latitude += 1; 
+      this.point.latitude += 1;
     }
   }
 
