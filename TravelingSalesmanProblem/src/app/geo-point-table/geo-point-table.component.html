@@ -9,17 +9,32 @@
     <td>Longitude</td>
   </tr>
   <tr *ngFor="let t of table">
-    <td><input type="number" name="name" [value]="t.name" (input)="onTableChange($event)"  /></td>
+    <td><input type="text" name="name" [value]="t.name" (input)="onTableChange($event)"  /></td>
     <td><input type="number" name="latitude" [value]="t.latitude" (input)="onTableChange($event)" /></td>
     <td><input type="number" name="longitude" [value]="t.longitude" (input)="onTableChange($event)" /></td>
   </tr>
   <tr>
-    <td><input type="number" name="name" [value]="point.name" (input)="point.name = $event.target.value"/></td>
+    <td><input type="text" name="name" [value]="point.name" (input)="point.name = $event.target.value"/></td>
     <td><input type="number" name="latitude" [value]="point.latitude" (input)="point.latitude = $event.target.value"/></td>
     <td><input type="number" name="longitude" [value]="point.longitude" (input)="point.longitude = $event.target.value"/></td>
     <td><button (click)="onAddPoint()">add</button></td>
   </tr>
   <tbody>
 </table>
+<br>
+<br>
 
-
+<table border="False">
+  <tbody>
+  <tr>
+    <td>Name</td>
+    <td>Latitude</td>
+    <td>Longitude</td>
+  </tr>
+  <tr *ngFor="let t of table">
+    <td>{{t.name}}</td>
+    <td>{{t.latitude}}</td>
+    <td>{{t.longitude}}</td>
+  </tr>
+  <tbody>
+</table>
