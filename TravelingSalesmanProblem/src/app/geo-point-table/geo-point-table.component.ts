@@ -20,10 +20,12 @@ export class GeoPointTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /*
   onTableChange(event){
     let clonedPoint = Object.assign({},event.target.value ); // copie superficielle (suffisante ici pour éviter de modifier accidentellement le point)
     this.tableChange.emit(clonedPoint);
   }
+  */
 
   onAddPoint(){
     let clonedPoint = Object.assign({},this.point);

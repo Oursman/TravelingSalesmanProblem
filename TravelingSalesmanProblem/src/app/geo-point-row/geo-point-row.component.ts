@@ -9,6 +9,7 @@ import {GeoPoint} from "../interfaces/geopoint";
 export class GeoPointRowComponent implements OnInit {
   @Input() point: GeoPoint;
   @Output() pointChange = new EventEmitter<GeoPoint>();
+  @Output() pointMigration: EventEmitter<number|null>;
   private latitudeValue: number;
   private nameValue: string;
   private longitudeValue: number;
@@ -17,7 +18,11 @@ export class GeoPointRowComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onTableChange(event){
+  onDelete(){
+    this.pointMigration.emit(null);
+  }
+
+  onPointChange(event){
     let clonedPoint = Object.assign({},event.target.value ); // copie superficielle (suffisante ici pour éviter de modifier accidentellement le point)
     this.pointChange.emit(clonedPoint);
   }
@@ -30,17 +35,17 @@ export class GeoPointRowComponent implements OnInit {
 
   onNameChange(event) {
     this.point.name = event.target.value;
-    this.onTableChange(this.point);
+    this.onPointChange(this.point);
   }
 
   onLatitudeChange(event) {
     this.point.latitude = event.target.value;
-    this.onTableChange(this.point);
+    this.onPointChange(this.point);
   }
 
   onLongitudeChange(event) {
     this.point.longitude = event.target.value;
-    this.onTableChange(this.point);
+    this.onPointChange(this.point);
   }
 
 }
