@@ -39,7 +39,20 @@ export class GeoPointTableComponent implements OnInit {
       let i = this.table.indexOf(t);
       [this.table[i],this.table[i+event]] = [this.table[i+event],this.table[i]];
     }
+  }
 
+  onSelectAction(option){
+    switch (option) {
+      case('reset') :
+        this.table.map( x => x.selected = false);
+        break;
+      case('invert'):
+        this.table.map( x => x.selected = !x.selected);
+        break;
+      case('all'):
+        this.table.map( x => x.selected = true);
+        break;
+    }
   }
 
 

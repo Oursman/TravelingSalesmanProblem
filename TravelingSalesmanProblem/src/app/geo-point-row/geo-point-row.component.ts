@@ -50,6 +50,13 @@ export class GeoPointRowComponent implements OnInit {
     this.onPointChange(this.point);
   }
 
+  onSelectedChange(event) {
+    console.log(event.target.value)
+    console.log((event.target.value == 'on'))
+    this.point.selected = (event.target.value == 'on');
+    this.onPointChange(this.point);
+  }
+
   onMove(direction){
     if(direction == 'up'){
       this.pointMigration.emit(-1);
@@ -67,7 +74,15 @@ export class GeoPointRowComponent implements OnInit {
       return(this.position == 0)
     }
     return false
+  }
 
+  checkedStatus(){
+    if(this.point.selected != null){
+      return this.point.selected;
+    }
+    this.point.selected = false;
+    this.onPointChange(this.point);
+    return false;
   }
 
 }
