@@ -2,12 +2,14 @@ import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@an
 import {GeoPoint} from "../interfaces/geopoint";
 
 @Component({
-  selector: 'tr [point]',
+  selector: 'tr [point] [position] [size]',
   templateUrl: './geo-point-row.component.html',
   styleUrls: ['./geo-point-row.component.css']
 })
 export class GeoPointRowComponent implements OnInit {
   @Input() point: GeoPoint;
+  @Input() position:number;
+  @Input() size:number;
   @Output() pointChange = new EventEmitter<GeoPoint>();
   @Output() pointMigration = new EventEmitter<number|null>();
   private latitudeValue: number;
@@ -46,6 +48,26 @@ export class GeoPointRowComponent implements OnInit {
   onLongitudeChange(event) {
     this.point.longitude = event.target.value;
     this.onPointChange(this.point);
+  }
+
+  onMove(direction){
+    if(direction == 'up'){
+      this.pointMigration.emit(-1);
+    }
+    else if(direction == 'down'){
+      this.pointMigration.emit(1);
+    }
+  }
+
+  enableStatus(direction){
+    if(direction == 'down'){
+      return (this.position == (this.size-1))
+    }
+    else if(direction =='up'){
+      return(this.position == 0)
+    }
+    return false
+
   }
 
 }

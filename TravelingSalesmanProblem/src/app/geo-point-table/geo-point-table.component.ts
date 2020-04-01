@@ -35,6 +35,11 @@ export class GeoPointTableComponent implements OnInit {
     if(event == null) {
       this.table = this.table.filter(item => item != t);
     }
+    if(event == 1 || event == -1){
+      let i = this.table.indexOf(t);
+      [this.table[i],this.table[i+event]] = [this.table[i+event],this.table[i]];
+    }
+
   }
 
 

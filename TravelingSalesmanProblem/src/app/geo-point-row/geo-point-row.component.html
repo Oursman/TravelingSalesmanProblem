@@ -2,5 +2,8 @@
 <td><input type="number" name="latitude" [value]="point.latitude" (input)="onLatitudeChange($event.target.value)" /></td>
 <td><input type="number" name="longitude" [value]="point.longitude" (input)="onLongitudeChange($event.target.value)" /></td>
 <td><button (click)="onDelete()">Delete</button></td>
+<td>
+  <button [disabled] = "enableStatus('up')" (click)="onMove('up')">Up</button></td>
+<td><button [disabled] = "enableStatus('down')" (click)="onMove('down')">Down</button></td>
 
 
