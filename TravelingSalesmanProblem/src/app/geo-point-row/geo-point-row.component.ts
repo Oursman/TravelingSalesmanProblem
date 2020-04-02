@@ -25,8 +25,10 @@ export class GeoPointRowComponent implements OnInit {
   }
 
   onPointChange(event){
-    let clonedPoint = Object.assign({},event.target.value ); // copie superficielle (suffisante ici pour éviter de modifier accidentellement le point)
-    this.pointChange.emit(clonedPoint);
+    if(event.target != undefined){
+      let clonedPoint = Object.assign({},event.target.value); // copie superficielle (suffisante ici pour éviter de modifier accidentellement le point)
+      this.pointChange.emit(clonedPoint);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -52,7 +54,7 @@ export class GeoPointRowComponent implements OnInit {
 
   onSelectedChange(event) {
     console.log(event.target.value)
-    console.log((event.target.value == 'on')):
+    console.log((event.target.value == 'on'))
     this.point.selected = (event.target.value == 'on');
     this.onPointChange(this.point);
   }
