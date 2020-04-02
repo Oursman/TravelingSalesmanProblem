@@ -55,16 +55,12 @@ export class GeoPointRowComponent implements OnInit {
     this.nameValue = this.point.name;
   }
 
-  /*
-  onNameChange(event) {
-    console.log("name "+event.target.value);
-    this.onTypedPlaceUpdate(event);
-    this.point.longitude =
 
+  onNameChange(event) {
     this.point.name = event.target.value;
     this.onPointChange(this.point);
   }
-  */
+
 
   onLatitudeChange(event) {
     this.point.latitude = event.target.value;
@@ -119,13 +115,12 @@ export class GeoPointRowComponent implements OnInit {
 
   onTypedPlaceUpdate(event) {
     this.typedPlace= event.target.value;
-    console.log("test "+this.typedPlace);
+
     clearTimeout(this.updateTimeoutHandle);
     this.updateTimeoutHandle = setTimeout(() => {this.placeProposals = this.locationFetcherService.fetchGeoPoints(this.typedPlace, this.limit); this.ref.detectChanges(); },1000);
   }
 
   selectPoint(point: GeoPoint) {
-    //this.pointSelected = point.name + " (" + point.latitude + ", " + point.longitude +")";
     this.pointSelected = point.name;
     if(this.pointSelected == this.typedPlace){
       this.point = point;
