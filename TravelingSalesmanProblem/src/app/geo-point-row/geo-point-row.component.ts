@@ -87,4 +87,10 @@ export class GeoPointRowComponent implements OnInit {
     return false;
   }
 
+  private _evalCounter: number = 0
+
+  get evalCounter() {
+    return this._evalCounter++
+  }
+
 }
