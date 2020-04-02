@@ -119,14 +119,16 @@ export class GeoPointRowComponent implements OnInit {
 
   onTypedPlaceUpdate(event) {
     this.typedPlace= event.target.value;
+    console.log("test "+this.typedPlace);
     clearTimeout(this.updateTimeoutHandle);
     this.updateTimeoutHandle = setTimeout(() => {this.placeProposals = this.locationFetcherService.fetchGeoPoints(this.typedPlace, this.limit); this.ref.detectChanges(); },1000);
   }
 
   selectPoint(point: GeoPoint) {
-    this.point = point;
-    this.pointSelected = point.name + " (" + point.latitude + ", " + point.longitude +")";
+    //this.pointSelected = point.name + " (" + point.latitude + ", " + point.longitude +")";
+    this.pointSelected = point.name;
     if(this.pointSelected == this.typedPlace){
+      this.point = point;
       let clonedPoint = Object.assign({}, point);
       this.pointChange.emit(clonedPoint);
     }
