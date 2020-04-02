@@ -44,6 +44,7 @@ export class GeoPointRowComponent implements OnInit {
 
   onPointChange(event){
     if(event.target != undefined){
+
       let clonedPoint = Object.assign({},event.target.value); // copie superficielle (suffisante ici pour éviter de modifier accidentellement le point)
       this.pointChange.emit(clonedPoint);
     }
