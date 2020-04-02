@@ -1,10 +1,21 @@
-import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import {GeoPoint} from "../interfaces/geopoint";
+import {GeoPointsResponse, LocationFetcherService} from "../location-fetcher.service";
 
 @Component({
   selector: 'tr [point] [position] [size]',
   templateUrl: './geo-point-row.component.html',
-  styleUrls: ['./geo-point-row.component.css']
+  styleUrls: ['./geo-point-row.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GeoPointRowComponent implements OnInit {
   @Input() point: GeoPoint;
@@ -15,7 +26,14 @@ export class GeoPointRowComponent implements OnInit {
   private latitudeValue: number;
   private nameValue: string;
   private longitudeValue: number;
-  constructor() { }
+
+  @Input() placeProposals: Promise<GeoPointsResponse>;
+  @Input() typedPlace: string;
+  private limit: number = 100;
+  private updateTimeoutHandle;
+  private pointSelected: string;
+
+  constructor(private locationFetcherService: LocationFetcherService, private ref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
@@ -38,6 +56,7 @@ export class GeoPointRowComponent implements OnInit {
   }
 
   onNameChange(event) {
+    console.log("name "+event.target.value);
     this.point.name = event.target.value;
     this.onPointChange(this.point);
   }
@@ -53,8 +72,8 @@ export class GeoPointRowComponent implements OnInit {
   }
 
   onSelectedChange(event) {
-    console.log(event.target.value)
-    console.log((event.target.value == 'on'))
+    console.log(event.target.value);
+    console.log((event.target.value == 'on'));
     this.point.selected = (event.target.value == 'on');
     this.onPointChange(this.point);
   }
@@ -70,12 +89,12 @@ export class GeoPointRowComponent implements OnInit {
 
   enableStatus(direction){
     if(direction == 'down'){
-      return (this.position == (this.size-1))
+      return (this.position == (this.size-1));
     }
     else if(direction =='up'){
-      return(this.position == 0)
+      return(this.position == 0);
     }
-    return false
+    return false;
   }
 
   checkedStatus(){
@@ -87,10 +106,25 @@ export class GeoPointRowComponent implements OnInit {
     return false;
   }
 
-  private _evalCounter: number = 0
+  private _evalCounter: number = 0;
 
   get evalCounter() {
-    return this._evalCounter++
+    return this._evalCounter++;
+  }
+
+  onTypedPlaceUpdate(event) {
+    this.typedPlace= event.target.value;
+    clearTimeout(this.updateTimeoutHandle);
+    this.updateTimeoutHandle = setTimeout(() => {this.placeProposals = this.locationFetcherService.fetchGeoPoints(this.typedPlace, this.limit); this.ref.detectChanges(); },1000);
+  }
+
+  selectPoint(point: GeoPoint) {
+    this.point = point;
+    this.pointSelected = point.name + " (" + point.latitude + ", " + point.longitude +")";
+    if(this.pointSelected == this.typedPlace){
+      let clonedPoint = Object.assign({}, point);
+      this.pointChange.emit(clonedPoint);
+    }
   }
 
 }

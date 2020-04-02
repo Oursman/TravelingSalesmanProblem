@@ -1,11 +1,15 @@
-<td><input type="text" name="name" [value]="point.name" (input)="onNameChange($event.target.value)"  /></td>
-<td><input type="number" name="latitude" [value]="point.latitude" (input)="onLatitudeChange($event.target.value)" /></td>
-<td><input type="number" name="longitude" [value]="point.longitude" (input)="onLongitudeChange($event.target.value)" /></td>
+<td><input list="typedPlace" type="text" name="typedPlace"  [value]="point.name" (input)="onNameChange($event)" (input)="onTypedPlaceUpdate($event)" hint="Type a prefix"/>
+  <datalist id="typedPlace" *ngIf="(placeProposals|async)?.success">
+    <option *ngFor="let item of (placeProposals|async)?.results" [selected]="selectPoint(item)">
+      {{ item.name }}
+    </option>
+  </datalist></td>
+<td><input  type="number" name="latitude" [value]="point.latitude" (input)="onLatitudeChange($event)" /></td>
+<td><input type="number" name="longitude" [value]="point.longitude" (input)="onLongitudeChange($event)" /></td>
 <td><input type="checkbox" id="selectpoint" name="selectpoint"  [checked]="checkedStatus()"  (input)="onSelectedChange($event)"></td>
 <td><button (click)="onDelete()">Delete</button></td>
 <td>
   <button [disabled] = "enableStatus('up')" (click)="onMove('up')">Up</button></td>
 <td><button [disabled] = "enableStatus('down')" (click)="onMove('down')">Down</button></td>
 <td>{{ evalCounter }}</td>
-
 
