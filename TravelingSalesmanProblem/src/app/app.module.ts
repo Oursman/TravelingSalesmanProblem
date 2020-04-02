@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { GeoPointTableComponent } from './geo-point-table/geo-point-table.component';
 import {GeoSimpleDisplayComponent} from "./geo-simple-display/geo-simple-display.component";
 import { GeoPointRowComponent } from './geo-point-row/geo-point-row.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { GeoPointRowComponent } from './geo-point-row/geo-point-row.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

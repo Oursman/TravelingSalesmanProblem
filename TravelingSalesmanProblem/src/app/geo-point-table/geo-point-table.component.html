@@ -43,7 +43,7 @@
 <button (click)="onSelectAction('all')">Select all </button>
 <button (click)="onSelectAction('reset')">Reset selection </button>
 <button (click)="onSelectAction('invert')">Invert selection</button>
-<table border="False">
+<table border="False" cdkDropList (cdkDropListDropped)="drop($event)" >
   <tbody>
   <tr>
     <td>Name</td>
@@ -51,7 +51,7 @@
     <td>Longitude</td>
   </tr>
 
-  <tr *ngFor="let t of table" [point]="t" [position]="table.indexOf(t)" [size]="table.length" (pointMigration)="update($event,t)" >
+  <tr  *ngFor="let t of table" [point]="t" [position]="table.indexOf(t)" [size]="table.length" (pointMigration)=" update($event,t)" cdkDrag>
   </tr>
   <tr>
     <td><input type="text" name="name" [value]="point.name" (input)="point.name = $event.target.value"/></td>

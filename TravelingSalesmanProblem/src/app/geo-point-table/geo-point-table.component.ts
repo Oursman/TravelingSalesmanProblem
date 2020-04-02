@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {GeoPoint} from "../interfaces/geopoint";
+import {CdkDragDrop, DragDropModule, moveItemInArray} from '@angular/cdk/drag-drop';
+
 
 @Component({
   selector: 'app-geo-point-table',
@@ -55,5 +57,8 @@ export class GeoPointTableComponent implements OnInit {
     }
   }
 
+  drop(event: CdkDragDrop<GeoPoint[]>) {
+    moveItemInArray(this.table, event.previousIndex, event.currentIndex);
+  }
 
 }
