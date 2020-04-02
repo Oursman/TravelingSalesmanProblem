@@ -1,4 +1,4 @@
-<td><input list="typedPlace" type="text" name="typedPlace"  [value]="point.name" (input)="onNameChange($event)" (input)="onTypedPlaceUpdate($event)" hint="Type a prefix"/>
+<td><input list="typedPlace" type="text" name="typedPlace" (input)="onTypedPlaceUpdate($event)"  hint="Type a prefix"/>
   <datalist id="typedPlace" *ngIf="(placeProposals|async)?.success">
     <option *ngFor="let item of (placeProposals|async)?.results" [selected]="selectPoint(item)">
       {{ item.name }}
