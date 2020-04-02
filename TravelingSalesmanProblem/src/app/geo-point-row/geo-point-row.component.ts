@@ -52,7 +52,7 @@ export class GeoPointRowComponent implements OnInit {
 
   onSelectedChange(event) {
     console.log(event.target.value)
-    console.log((event.target.value == 'on'))
+    console.log((event.target.value == 'on')):
     this.point.selected = (event.target.value == 'on');
     this.onPointChange(this.point);
   }
