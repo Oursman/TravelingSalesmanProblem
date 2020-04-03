@@ -61,4 +61,7 @@ export class GeoPointTableComponent implements OnInit {
     moveItemInArray(this.table, event.previousIndex, event.currentIndex);
   }
 
+  getTable() {
+    return this.table;
+  }
 }

@@ -115,7 +115,6 @@ export class GeoPointRowComponent implements OnInit {
 
   onTypedPlaceUpdate(event) {
     this.typedPlace= event.target.value;
-
     clearTimeout(this.updateTimeoutHandle);
     this.updateTimeoutHandle = setTimeout(() => {this.placeProposals = this.locationFetcherService.fetchGeoPoints(this.typedPlace, this.limit); this.ref.detectChanges(); },1000);
   }
@@ -123,9 +122,15 @@ export class GeoPointRowComponent implements OnInit {
   selectPoint(point: GeoPoint) {
     this.pointSelected = point.name;
     if(this.pointSelected == this.typedPlace){
-      this.point = point;
-      let clonedPoint = Object.assign({}, point);
-      this.pointChange.emit(clonedPoint);
+     /* this.point = point;
+      console.log(this.point);
+      this.onPointChange(this.point);*/
+      this.point.latitude = point.latitude;
+      this.onPointChange(this.point);
+      this.point.name = point.name;
+      this.onPointChange(this.point);
+      this.point.longitude = point.longitude;
+      this.onPointChange(this.point);
     }
   }
 

@@ -8,13 +8,15 @@ import {GeoSimpleDisplayComponent} from "./geo-simple-display/geo-simple-display
 import { GeoPointRowComponent } from './geo-point-row/geo-point-row.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import {HttpClientModule} from '@angular/common/http';
+import { GeoMapComponent } from './geo-map/geo-map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GeoPointTableComponent,
     GeoSimpleDisplayComponent,
-    GeoPointRowComponent
+    GeoPointRowComponent,
+    GeoMapComponent
   ],
   imports: [
     BrowserModule,

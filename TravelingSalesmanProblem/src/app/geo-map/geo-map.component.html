@@ -1,0 +1,4 @@
+<svg width="1000" height="1000" >
+  <circle *ngFor="let point of TabPoints" [attr.cx]="convertLongitude(point.longitude)" [attr.cy]="convertLatitude(point.latitude)" [attr.r]="5"></circle>
+  <text *ngFor="let point of TabPoints"  [attr.x]="convertLongitude(point.longitude)" [attr.y]="convertLatitude(point.latitude)">{{point.name}}</text>
+</svg>

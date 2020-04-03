@@ -25,21 +25,11 @@
 <br>
 <br>
 
-<table border="False">
-  <tbody>
-  <tr>
-    <td>Name</td>
-    <td>Latitude</td>
-    <td>Longitude</td>
-  </tr>
-  <tr *ngFor="let t of table">
-    <td>{{t.name}}</td>
-    <td>{{t.latitude}}</td>
-    <td>{{t.longitude}}</td>
-  </tr>
-  <tbody>
-</table>
+
 -->
+<div>
+  <app-geo-map [TabPoints]="getTable()"></app-geo-map>
+</div>
 <button (click)="onSelectAction('all')">Select all </button>
 <button (click)="onSelectAction('reset')">Reset selection </button>
 <button (click)="onSelectAction('invert')">Invert selection</button>
@@ -61,3 +51,4 @@
   </tr>
   </tbody>
 </table>
+
