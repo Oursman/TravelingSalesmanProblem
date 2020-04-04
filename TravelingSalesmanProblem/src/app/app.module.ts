@@ -8,6 +8,7 @@ import {GeoSimpleDisplayComponent} from "./geo-simple-display/geo-simple-display
 import { GeoPointRowComponent } from './geo-point-row/geo-point-row.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import {HttpClientModule} from '@angular/common/http';
+import { PointsImporterComponent } from './points-importer/points-importer.component';
 import { GeoMapComponent } from './geo-map/geo-map.component';
 import { PointsImporterComponent } from './points-importer/points-importer.component';
 

@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {GeoPoint} from "../interfaces/geopoint";
 import {CdkDragDrop, DragDropModule, moveItemInArray} from '@angular/cdk/drag-drop';
+import {LocationFetcherService} from "../location-fetcher.service";
+import {LocationGPSService} from "../location-gps.service";
 
 
 @Component({
@@ -16,7 +18,7 @@ export class GeoPointTableComponent implements OnInit {
   table:GeoPoint[] = [];
   @Input() point: GeoPoint  = {"latitude":0,"name": "geo-simple-input", "longitude":0};
 
-  constructor() { }
+  constructor(private locationGPSService: LocationGPSService ) { }
 
   ngOnInit(): void {
   }
@@ -71,4 +73,17 @@ export class GeoPointTableComponent implements OnInit {
     }
     this.onTableChange(this.table);
   }
+
+  getCurrentPosition(){
+    this.locationGPSService.getPosition().then(pos=>
+    {
+      console.log(`Positon: ${pos.lng} ${pos.lat}`);
+      this.point.name = " Current position";
+      this.point.longitude = pos.lng;
+      this.point.latitude = pos.lat;
+    }).catch(e=>{
+      console.log(e);
+    })
+  }
+
 }
