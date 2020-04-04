@@ -9,6 +9,7 @@ import { GeoPointRowComponent } from './geo-point-row/geo-point-row.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import {HttpClientModule} from '@angular/common/http';
 import { GeoMapComponent } from './geo-map/geo-map.component';
+import { PointsImporterComponent } from './points-importer/points-importer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { GeoMapComponent } from './geo-map/geo-map.component';
     GeoPointTableComponent,
     GeoSimpleDisplayComponent,
     GeoPointRowComponent,
-    GeoMapComponent
+    GeoMapComponent,
+    PointsImporterComponent
   ],
   imports: [
     BrowserModule,
