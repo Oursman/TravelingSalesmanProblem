@@ -47,7 +47,8 @@
     <td><input type="text" name="name" [value]="point.name" (input)="point.name = $event.target.value"/></td>
     <td><input type="number" name="latitude" [value]="point.latitude" (input)="point.latitude = $event.target.value"/></td>
     <td><input type="number" name="longitude" [value]="point.longitude" (input)="point.longitude = $event.target.value"/></td>
-    <td><button (click)="onAddPoint()">add</button></td>
+    <td><button (click)="getCurrentPosition()">Get you position</button></td>
+    <td><button (click)="onAddPoint()">Add</button></td>
   </tr>
   </tbody>
 </table>
