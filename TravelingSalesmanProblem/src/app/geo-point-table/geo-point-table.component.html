@@ -33,6 +33,7 @@
 <button (click)="onSelectAction('all')">Select all </button>
 <button (click)="onSelectAction('reset')">Reset selection </button>
 <button (click)="onSelectAction('invert')">Invert selection</button>
+<td><button (click)="copyListPoints()">Copy to the clipboard</button></td>
 <table border="False" cdkDropList (cdkDropListDropped)="drop($event)" >
   <tbody>
   <tr>

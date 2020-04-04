@@ -78,5 +78,13 @@ export class GeoPointTableComponent implements OnInit {
       console.log(e);
     })
   }
+  copyListPoints(){
+    navigator.clipboard.writeText(JSON.stringify(this.table)).then(function() {
+     console.log("sucess")
+    }, function() {
+      console.log("fail")
+    });
+  }
+
 
 }
