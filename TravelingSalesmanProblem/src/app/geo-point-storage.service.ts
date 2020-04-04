@@ -6,8 +6,6 @@ import {SubscriptionLike} from "rxjs";
   providedIn: 'root'
 })
 export class GeoPointStorageService implements OnInit{
-  private points: void;
-  private serviceSubscription: SubscriptionLike;
 
   constructor() { }
 
@@ -16,15 +14,19 @@ export class GeoPointStorageService implements OnInit{
   }
 
   savePoints(points: GeoPoint[]){
-    try {
-      localStorage.setItem('points', JSON.stringify(points))
-    }catch(e){
-      console.log(e)
-    }
+    console.log("SAVED")
+      localStorage.setItem('table', JSON.stringify(points))
   }
 
   loadPoints(){
-    JSON.parse(localStorage.getItem('points'));
+    let tmp = JSON.parse(localStorage.getItem('table'));
+    if(tmp == null){
+      console.log("null")
+      return []
+    }
+    console.log("exist")
+    return tmp
+
   }
 
 }

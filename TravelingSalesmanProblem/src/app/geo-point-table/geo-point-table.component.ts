@@ -26,12 +26,9 @@ export class GeoPointTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.points = this.storageService.loadPoints();
+    this.table = this.storageService.loadPoints();
     this.serviceSubscription = this.tableChange.subscribe(change => {
-
-        this.storageService.savePoints(this.points)
-
-
+      this.storageService.savePoints(this.table)
     });
   }
 
@@ -49,6 +46,7 @@ export class GeoPointTableComponent implements OnInit {
   onAddPoint() {
     let clonedPoint = Object.assign({}, this.point);
     this.table.push(clonedPoint);
+    this.onTableChange(this.table);
   }
 
   update(event, t) {
@@ -108,6 +106,4 @@ export class GeoPointTableComponent implements OnInit {
       console.log("fail")
     });
   }
-
-
 }
