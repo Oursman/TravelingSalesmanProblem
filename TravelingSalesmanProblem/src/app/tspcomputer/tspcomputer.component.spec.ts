@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GeoSimpleDisplayComponent } from './geo-simple-display.component';
+import { TSPComputerComponent } from './tspcomputer.component';
 
-describe('GeoSimpleDisplayComponent', () => {
-  let component: GeoSimpleDisplayComponent;
-  let fixture: ComponentFixture<GeoSimpleDisplayComponent>;
+describe('TSPComputerComponent', () => {
+  let component: TSPComputerComponent;
+  let fixture: ComponentFixture<TSPComputerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GeoSimpleDisplayComponent ]
+      declarations: [ TSPComputerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GeoSimpleDisplayComponent);
+    fixture = TestBed.createComponent(TSPComputerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

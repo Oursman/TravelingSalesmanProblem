@@ -26,7 +26,6 @@ export class GeoPointStorageService implements OnInit{
     }
     console.log("exist")
     return tmp
-
   }
 
 }
