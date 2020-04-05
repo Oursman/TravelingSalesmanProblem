@@ -32,6 +32,9 @@ export class TSPComputerComponent implements OnInit {
     this.start = this.table[0];
     this.end = this.table[this.table.length-1];
 
+    console.log(this.getTableDistance(this.table))
+    console.log(this.getTableDistance(this.randomSwap(newTable)))
+
   }
 
   StartPoint(e) {
@@ -45,12 +48,6 @@ export class TSPComputerComponent implements OnInit {
     let element = this.table.filter(x => x.name === name)[0];
     this.end = element;
     let newTable = Object.assign({},this.table);
-
-
-
-    console.log(this.getTableDistance(this.table))
-    console.log(this.getTableDistance(this.randomSwap(newTable)))
-
   }
 
   /*
