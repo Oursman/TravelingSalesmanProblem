@@ -43,7 +43,7 @@
     <td>Longitude</td>
   </tr>
 
-  <tr  *ngFor="let t of table" [point]="t" [position]="table.indexOf(t)" [size]="table.length" (pointMigration)=" update($event,t)" cdkDrag>
+  <tr  *ngFor="let t of table" [point]="t" [position]="table.indexOf(t)" [size]="table.length" (pointMigration)=" update($event,t)" (change)="onTableChange(table)" cdkDrag>
   </tr>
   <tr>
     <td><input type="text" name="name" [value]="point.name" (input)="point.name = $event.target.value"/></td>

@@ -31,9 +31,13 @@ export class TSPComputerComponent implements OnInit {
 
     this.start = this.table[0];
     this.end = this.table[this.table.length-1];
+    this.table=[];
+    this.table.push(this.p2);
+    this.table.push(this.p1);
 
     console.log(this.getTableDistance(this.table))
-    console.log(this.getTableDistance(this.randomSwap(newTable)))
+
+   // console.log(this.getTableDistance(this.randomSwap(newTable)))
 
   }
 
@@ -59,11 +63,16 @@ export class TSPComputerComponent implements OnInit {
     })
   }*/
   splitTable(table:GeoPoint[],a:number[],b:number[]){
-    table.forEach(x => {
+    /*table.forEach(x => {
       this.nameTable.push(x.name)
       a.push(x.longitude)
       b.push(x.latitude)
-    })
+    })*/
+    for (let i = 0 ;table[i]!=null;i++){
+      this.nameTable.push(table[i].name)
+      a.push(table[i].longitude)
+      b.push(table[i].latitude)
+    }
   }
 
 
@@ -85,6 +94,11 @@ export class TSPComputerComponent implements OnInit {
   getTableDistance(table:GeoPoint[]) {
     let a:number[]=[]  // SI TA UN PROBLEME  = mets en variable COMPOSANT this.a etc..
     let b:number[]=[]
+    let tmp =[];
+    for (let i = 0 ;table[i]!=null;i++){
+      tmp.push(table[i]);
+    }
+    console.log(tmp.length);
     this.splitTable(table,a,b)
     return a.map((x, i) => Math.abs( x - b[i] ) ** 2).reduce((sum, now) => sum + now) ** (1/2)
   }
@@ -96,11 +110,11 @@ export class TSPComputerComponent implements OnInit {
   randomSwap(table:GeoPoint[]){
     console.log(table)
     console.log(table.length)
-    let i1 = this.getRandomInt(table.length-1)
-    let i2 = this.getRandomInt(table.length-1)
+    let i1 = this.getRandomInt(this.table.length-1)
+    let i2 = this.getRandomInt(this.table.length-1)
 
-    console.log("first point to swap "+table[i1])
-    console.log("second point to swap "+table[i2])
+    console.log("first point to swap "+table[i1].name)
+    console.log("second point to swap "+table[i2].name)
 
     let tmp = table[i1]
     this.table[i1] = table[i2]

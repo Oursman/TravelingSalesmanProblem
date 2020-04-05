@@ -40,6 +40,7 @@ export class GeoPointTableComponent implements OnInit {
   onTableChange(event: GeoPoint[]) {
     let clonedPoint = Object.assign({}, event); // copie superficielle (suffisante ici pour éviter de modifier accidentellement le point)
     this.tableChange.emit(clonedPoint);
+    this.storageService.savePoints(this.table);
   }
 
 
@@ -57,6 +58,7 @@ export class GeoPointTableComponent implements OnInit {
       let i = this.table.indexOf(t);
       [this.table[i], this.table[i + event]] = [this.table[i + event], this.table[i]];
     }
+    this.onTableChange(this.table);
   }
 
   onSelectAction(option) {
@@ -75,6 +77,7 @@ export class GeoPointTableComponent implements OnInit {
 
   drop(event: CdkDragDrop<GeoPoint[]>) {
     moveItemInArray(this.table, event.previousIndex, event.currentIndex);
+    this.onTableChange(this.table);
   }
 
   getTable() {
