@@ -56,5 +56,7 @@
 </table>
 <div>
   <app-points-importer [TabPoints]="getTable()" (tableChange)="MajTable($event)"></app-points-importer>
-
+</div>
+<div>
+  <app-tspcomputer [table]="getTable()"></app-tspcomputer>
 </div>
