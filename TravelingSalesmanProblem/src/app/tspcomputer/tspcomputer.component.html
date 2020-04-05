@@ -1,1 +1,24 @@
-<p>tspcomputer works!</p>
+<div>
+  <p>Point de Départ</p>
+  <input type="text"  list="codes" type="text" [value]="start.name"  hint="Type a prefix" (change)="StartPoint($event)"/>
+  <datalist id="codes">
+    <option *ngFor="let item of table" >
+      {{ item.name }}
+    </option>
+  </datalist>
+
+  <p>Point de Départ</p>
+  <input list="typedPlace" type="text"  hint="Type a prefix" [value]="end.name" (change)="EndPoint($event)"/>
+  <datalist id="typedPlace">
+    <option *ngFor="let item of table">
+      {{ item.name }}
+    </option>
+  </datalist>
+  <p>La température de démarrage T(0)</p>
+  <input  type="number" name="latitude" [value]="temperature"  (change)="onTemperatureChange($event)" />
+  <p>Le coefficient de décroissance α de la température</p>
+  <input  type="number" name="latitude" [value]="decreaseRate"  (change)="onTemperatureChange($event)" max="1.0"/>
+  <p>Le temps de calcul</p>
+  <input  type="number" name="latitude"  [value]="time" (change)="onTemperatureChange($event)" min="0"/>
+
+</div>
