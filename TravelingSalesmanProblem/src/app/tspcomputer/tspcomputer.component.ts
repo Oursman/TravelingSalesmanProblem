@@ -28,7 +28,7 @@ export class TSPComputerComponent implements OnInit {
     this.time = 0.0
     this.decreaseRate = 0.0
     let newTable =  Object.assign({},this.table);
-    /*
+
     this.start = this.table[0];
     this.end = this.table[this.table.length-1];
 
@@ -44,11 +44,9 @@ export class TSPComputerComponent implements OnInit {
     let name = e.target.value;
     let element = this.table.filter(x => x.name === name)[0];
     this.end = element;
+    let newTable = Object.assign({},this.table);
 
-    console.log(this.splitTable(this.table))
-    console.log(this.getTableDistance(this.longitudeTable,this.latitudeTable))
-    console.log(this.randomSwap())
-    */
+
 
     console.log(this.getTableDistance(this.table))
     console.log(this.getTableDistance(this.randomSwap(newTable)))
@@ -116,7 +114,6 @@ export class TSPComputerComponent implements OnInit {
     /*
     let clonedPoint = Object.assign({},table); // copie superficielle (suffisante ici pour éviter de modifier accidentellement le point)
     this.tableChange.emit(clonedPoint);*/
-
   }
 
   onTemperatureChange(e) {
